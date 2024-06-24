@@ -11,7 +11,7 @@
     <body class="dark:bg-gray-700 dark:text-white p-4">
         <div class="max-w-[1000px] w-full mx-auto relative">
             <div
-                class="dark:bg-blue-700 bg-blue-500 text-white p-4 flex justify-between"
+                class="dark:bg-blue-950 bg-blue-500 text-white p-4 flex justify-between"
             >
                 <button class="block sm:hidden" onclick="toggleMenu()">
                     <svg
@@ -37,19 +37,19 @@
                     </svg>
                 </button>
                 <div
-                    class="absolute top-[56px] left-0 bg-blue-300 p-3 hidden w-full"
+                    class="absolute top-[56px] left-0 dark:bg-blue-950 bg-blue-500 p-3 hidden w-full"
                     id="ddMenu"
                 ></div>
                 <div id="menuContainer" class="justify-start gap-4 hidden sm:flex"></div>
                 <div id="themeToggleContainer"></div>
             </div>
             <div class="py-4">
-                <h1 class="text-3xl border-b-[10px] border-blue-300 pb-4">
+                <h1 class="text-3xl border-b-[10px] dark:border-blue-950 border-blue-500 pb-4">
                     Calculator
                 </h1>
-                <div id="app" class="w-full bg-blue-100 p-2 calculator"></div>                
+                <div id="app" class="w-full dark:bg-gray-500 bg-blue-100 p-2 calculator"></div>                
             </div>
         </div>
-        <script src="./app.js"></script>
+        <script src="./app.js" type="module"></script>
     </body>
 </html>
