@@ -4,7 +4,7 @@ const ddMenu = document.querySelector('#ddMenu')
 const sandwitch = document.querySelectorAll('svg')
 const html = document.documentElement
 
-const toggleTheme = () => {
+const toggle = () => {
     const isDarkMode = html.classList.contains('dark');
     html.classList.toggle('dark');
 };
