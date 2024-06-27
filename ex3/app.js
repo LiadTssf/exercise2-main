@@ -4,7 +4,7 @@ const ddMenu = document.querySelector('#ddMenu')
 const sandwitch = document.querySelectorAll('svg')
 const html = document.documentElement
 
-const toggleTheme = () => {
+const toggle = () => {
     const isDarkMode = html.classList.contains('dark');
     html.classList.toggle('dark');
 };
@@ -23,9 +23,9 @@ const setView = (v) => {
 
 const toggleMenu = (hide) => {
     if (!hide) {
-        ddMenu.classList.toggleTheme('hidden')
+        ddMenu.classList.toggle('hidden')
         document.querySelectorAll('svg').forEach((el) => {
-            el.classList.toggleTheme('hidden')
+            el.classList.toggle('hidden')
         })
     } else {
         ddMenu.classList.add('hidden')
@@ -126,12 +126,10 @@ const renderMenu = () => {
     });
 };
 
-
-
 const renderThemeToggle = () => {
     const toggleButtons = [
-        { className: 'dark:hidden block', text: 'Dark', action: toggleTheme },
-        { className: 'hidden dark:block', text: 'Light', action: toggleTheme }
+        { className: 'dark:hidden block', text: 'Dark', action: toggle },
+        { className: 'hidden dark:block', text: 'Light', action: toggle }
     ];
 
     const container = document.getElementById('themeToggleContainer');
@@ -150,5 +148,5 @@ document.addEventListener('DOMContentLoaded', () => {
     setView('Calculator'); // Set the default view to Calculator
     renderMenu();
     renderThemeToggle();
-    renderCalculator();
 });
+
