@@ -23,9 +23,9 @@ const setView = (v) => {
 
 const toggleMenu = (hide) => {
     if (!hide) {
-        ddMenu.classList.toggle('hidden')
+        ddMenu.classList.toggleTheme('hidden')
         document.querySelectorAll('svg').forEach((el) => {
-            el.classList.toggle('hidden')
+            el.classList.toggleTheme('hidden')
         })
     } else {
         ddMenu.classList.add('hidden')
@@ -150,4 +150,5 @@ document.addEventListener('DOMContentLoaded', () => {
     setView('Calculator'); // Set the default view to Calculator
     renderMenu();
     renderThemeToggle();
+    renderCalculator();
 });
