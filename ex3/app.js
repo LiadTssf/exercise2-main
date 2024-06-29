@@ -4,10 +4,17 @@ const ddMenu = document.querySelector('#ddMenu')
 const sandwitch = document.querySelectorAll('svg')
 const html = document.documentElement
 
+// Function to send the height of the content to the parent page
+const sendHeightToParent = () => {
+    const height = document.body.scrollHeight;
+    window.parent.postMessage({ type: 'myApp', action: 'setHeight', height }, '*');
+};
+
 const toggle = () => {
     const isDarkMode = html.classList.contains('dark');
     html.classList.toggle('dark');
 };
+
 const setView = (v) => {
     header.innerText = v
     toggleMenu(true)
@@ -19,7 +26,8 @@ const setView = (v) => {
     } else if (v === 'Contact') {
         renderContact()
     }
-}
+    sendHeightToParent();  // Update height after changing view
+};
 
 const toggleMenu = (hide) => {
     if (!hide) {
@@ -32,12 +40,12 @@ const toggleMenu = (hide) => {
         document.querySelectorAll('svg')[0].classList.remove('hidden')
         document.querySelectorAll('svg')[1].classList.add('hidden')
     }
-}
+};
 
 const addRow = (container, content) => {
     const row = `<div class='grid grid-cols-5 gap-2'>${content}</div>`
     container.insertAdjacentHTML('beforeend', row)
-}
+};
 
 const addMonitor = (container, text) => {
     const t = text ?? ''
@@ -46,17 +54,17 @@ const addMonitor = (container, text) => {
         ${t}
     </div>`;
     container.insertAdjacentHTML('beforeend', monitor)
-}
+};
 
 const button = (text) => {
     const c = text === 'calculate' ? 'col-span-4' : ''
     return `<div class='bg-blue-400 dark:bg-[#051227] hover:bg-blue-600 dark:hover:bg-[#091f3a] text-white ${c} py-1 rounded-md text-center text-lg font-bold cursor-pointer d-btn'>${text}</div>`
-}
+};
 
 const addButtons = (container, nums) => {
     const btnHTML = nums.map((n) => button(n)).join('')
     addRow(container, btnHTML)
-}
+};
 
 const click = (event) => {
     const monitor = document.getElementById('monitor')
@@ -70,7 +78,7 @@ const click = (event) => {
     } else {
         monitor.innerText += a
     }
-}
+};
 
 const renderCalculator = () => {
     const labels = [1, 2, 3, 4, 5, 6, 7, 8, 9, 0, '+', '-', '*', '/', '**', 'calculate', 'clear']
@@ -79,15 +87,15 @@ const renderCalculator = () => {
     addButtons(app, labels)
     const buttons = document.querySelectorAll('.d-btn')
     buttons.forEach((el) => el.addEventListener('click', click))
-}
+};
 
 const renderAbout = () => {
     app.innerHTML = '<div class="p-4 h-[200px] flex items-center justify-center">Temp for About</div>'
-}
+};
 
 const renderContact = () => {
     app.innerHTML = '<div class="p-4 h-[200px] flex items-center justify-center">Temp for Contact</div>'
-}
+};
 
 const renderMenu = () => {
     // Initialize the menu state
@@ -109,10 +117,10 @@ const renderMenu = () => {
         ddMenu.appendChild(button);
     });
 
-    // Populate the navigation bar for larger screens
+    
     const navBar = document.querySelector('.sm\\:flex');
     navBar.innerHTML = '';
-
+    // Populate the navigation bar for larger screens
     menuItems.forEach(item => {
         const button = document.createElement('button');
         button.innerText = item.name;
@@ -144,9 +152,29 @@ const renderThemeToggle = () => {
     });
 };
 
+// Event listener for DOM content loaded
 document.addEventListener('DOMContentLoaded', () => {
     setView('Calculator'); // Set the default view to Calculator
     renderMenu();
     renderThemeToggle();
+    sendHeightToParent();  // Send initial height on DOM load
 });
 
+// Listen for messages from the parent page
+window.addEventListener('message', (event) => {
+    if (event.data === 'requestHeight') {
+        sendHeightToParent();
+    }
+    if (event.data.action === 'setTheme') {
+        setTheme(event.data.theme);
+    }
+    if (event.data.action === 'privateApi' && typeof acceptPrivateApiResponse !== 'undefined') {
+        acceptPrivateApiResponse(event.data);
+    }
+});
+
+// Observe changes to the content's height
+const resizeObserver = new ResizeObserver(() => {
+    sendHeightToParent();
+});
+resizeObserver.observe(document.body);
