@@ -22,7 +22,7 @@ const HabitTracker = () => {
   */
 
   const [habits, setHabits] = useState([
-    { name: '💪 Exercise', color: 'bg-yellow-500', Active_days: [1,3,5,null,null,null,null], completedDays: [1,null,null,null,null,null,null] },
+    { name: '💪 Exercise', color: 'bg-yellow-500', Active_days: [1,3,5,null,null,null,null], completedDays: [] },
     { name: '📝 Journal', color: 'bg-purple-500', Active_days: [0,2,4,null,null,null,null], completedDays: [] },
     { name: '❌ Alcohol', color: 'bg-pink-500', Active_days: [1,null,null,null,null,null,null], completedDays: [] },
     { name: '🚿 Cold Shower', color: 'bg-blue-500', Active_days: [0,null,null,null,null,null], completedDays: [] },
@@ -69,6 +69,7 @@ const HabitTracker = () => {
         <Habits statuses={habits} />
       </div>
     </div>
+    
   );
 };
 

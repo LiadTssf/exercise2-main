@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-const HabitTable = ({ habits }) => {
+const HabitTable = ({ habits, handleMarkComplete }) => {
   return (
     <table className="w-full mt-6 border-collapse">
       <thead>
@@ -22,9 +22,13 @@ const HabitTable = ({ habits }) => {
               <span>{item.name.split(' ')[0]}</span>
               <span className="ml-2">{item.name.split(' ')[1]}</span>
             </td>
-            {item.Active_days.map((day, dayIdx) => (
-              <td key={dayIdx}  className={`p-2 ${item.Active_days.includes(dayIdx) ? item.color : ''}`}>
-                
+            {Array.from({ length: 7 }).map((_, dayIdx) => (
+              <td
+                key={dayIdx}
+                className={`p-2 ${item.Active_days.includes(dayIdx) ? item.color : ''}`}
+                onClick={() => handleMarkComplete(item, dayIdx)}
+              >
+                {item.completedDays.includes(dayIdx) ? '✔️' : ''}
               </td>
             ))}
           </tr>
