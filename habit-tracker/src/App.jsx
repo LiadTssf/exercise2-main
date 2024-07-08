@@ -1,11 +1,22 @@
-import React, { useEffect } from "react"
+import React from 'react';
+import HabitTracker from './HabitTracker';
+import styled from 'styled-components';
 
 function App() {
-    return (
-        <div className="text-center text-8xl text-blue-500 drop-shadow-lg">
-            Hello World
-        </div>
-    )
+  return (
+    <AppContainer>
+      <HabitTracker />
+    </AppContainer>
+  );
 }
 
-export default App
+export default App;
+
+const AppContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #f0f0f0;
+  font-family: Arial, sans-serif;
+`;
