@@ -5,6 +5,13 @@ const Habit = ({ name, status, color, onMarkComplete, onUndo }) => {
   const isCompleted = status === 'Completed';
   const isPending = status === 'Pending';
 
+  const getTextColor = () => {
+    if (isInactive) return 'text-gray-500';
+    if (isCompleted) return 'text-white';
+    if (isPending) return 'text-black';
+    return 'text-black'; // Default color
+  };
+
   return (
     <div className={`flex items-center justify-between p-4 mb-2 ${isInactive ? 'bg-gray-200 text-gray-500' : isCompleted ? color : 'bg-white'} shadow-md rounded-lg`}>
       <div className="flex items-center">
@@ -15,8 +22,8 @@ const Habit = ({ name, status, color, onMarkComplete, onUndo }) => {
           </div>
         )}
         <div>
-          <h3 className={`text-white text-lg font-semibold ${isInactive ? 'text-gray-500' : isCompleted ? '' : 'text-black'}`}>{name}</h3>
-          <p className={`text-sm text-white ${isInactive ? 'text-gray-500' : isCompleted ? '' : 'text-black'}`}>
+          <h3 className={`text-lg font-semibold ${getTextColor()}`}>{name}</h3>
+          <p className={`text-sm ${getTextColor()}`}>
             {isCompleted ? '✔️' : isPending ? '🕒' : ''} {status}
           </p>
         </div>

@@ -1,21 +1,9 @@
 import React, { useState } from 'react';
 import Habit from './Habit';
-export const fakeDatabase = [
-  { name: 'Exercise', color: 'bg-yellow-500', Active_days: [1, 3, 5], completedDays: [] },
-  { name: 'Journal', color: 'bg-purple-500', Active_days: [0, 1, 2, 3, 4, 5, 6], completedDays: [] },
-  { name: 'Alcohol', color: 'bg-pink-500', Active_days: [0, 1, 2, 3, 4, 5, 6], completedDays: [] },
-  { name: 'Cold Shower', color: 'bg-blue-500', Active_days: [2, 4], completedDays: [] },
-  { name: 'Floss', color: 'bg-gray-500', Active_days: [0, 2, 4, 6], completedDays: [] },
-  { name: 'Meditate', color: 'bg-orange-500', Active_days: [1, 3, 5], completedDays: [] },
-  { name: 'eBook', color: 'bg-teal-500', Active_days: [1, 2, 3, 4, 5], completedDays: [] },
-  { name: 'Run', color: 'bg-red-500', Active_days: [0, 2, 4], completedDays: [] },
-  { name: 'Read', color: 'bg-green-500', Active_days: [0, 3, 6], completedDays: [] },
-  { name: 'Cook', color: 'bg-indigo-500', Active_days: [1, 2, 3], completedDays: [] }
-];
 
-const Habits = () => {
+const Habits = ({ statuses }) => {
 
-  const [habits, setHabits] = useState(fakeDatabase);
+  const [habits, setHabits] = useState(statuses);
 
   const handleMarkComplete = (index) => {
     const updatedHabits = habits.map((habit, i) => {
@@ -59,7 +47,7 @@ const Habits = () => {
         const isActiveToday = habit.Active_days.includes(today);
         const isCompletedToday = habit.completedDays.includes(today);
         let status = isActiveToday ? (isCompletedToday ? 'Completed' : 'Pending') : `Inactive on ${new Date().toLocaleDateString('en-US', { weekday: 'long' })}`;
-
+        
         return (
           <Habit
             key={index}

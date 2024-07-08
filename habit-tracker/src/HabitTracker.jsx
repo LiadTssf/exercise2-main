@@ -6,10 +6,8 @@ import HabitForm from './HabitForm';
 
 const HabitTracker = () => {
   const [week, setWeek] = useState('Mon, Dec 14 - Sun, Dec 20');
-  
+  /*
   const [habits, setHabits] = useState([
-    { habit: 'Read a book', data: [true, false, true, true, false, true, false] },
-    { habit: 'Exercise', data: [false, true, false, true, true, false, true] },
     { habit: '💪 Exercise', data: [null, null, null, null, null, null, null] },
     { habit: '📝 Journal', data: ['#d4a4fc', '#d4a4fc', '#d4a4fc', '#d4a4fc', '#d4a4fc', '#d4a4fc', '#d4a4fc'] },
     { habit: '❌ Alcohol', data: ['#f8a4a4', '#f8a4a4', '#f8a4a4', null, '#f8a4a4', '#f8a4a4', '#f8a4a4'] },
@@ -17,19 +15,25 @@ const HabitTracker = () => {
     { habit: '🦷 Floss', data: ['#a4fca4', '#a4fca4', null, '#a4fca4', null, null, null] },
     { habit: '🧘 Meditate', data: [null, null, null, null, null, null, null] },
     { habit: '🎧 eBook', data: [null, '#a4d4fc', '#a4d4fc', null, null, null, null] },
+    { habit: 'Run', data: [null, '#a4d4fc', '#a4d4fc', null, null, null, null] },
+    { habit: 'Read', data: [null, '#a4d4fc', '#a4d4fc', null, null, null, null] },
+    { habit: 'Cook', data: [null, '#a4d4fc', '#a4d4fc', null, null, null, null] },
   ]);
-  const [statuses, setStatuses] = useState([
-    { habit: 'Read a book', status: 'Good', completed: true },
-    { habit: 'Exercise', status: 'Average', completed: false },
-    { habit: '💪 Exercise', status: 'Inactive on Tuesday', completed: false },
-    { habit: '📝 Journal', status: 'Completed', completed: true },
-    { habit: '❌ Alcohol', status: 'Avoided', completed: true },
-    { habit: '🚿 Cold Shower', status: null, completed: false },
-    { habit: '🦷 Floss', status: 'Inactive on Tuesday', completed: false },
-    { habit: '🧘 Meditate', status: null, completed: false },
-    { habit: '🎧 eBook', status: null, completed: false },
-    
-  ]);
+  */
+
+  const [habits, setHabits] = useState([
+    { name: '💪 Exercise', color: 'bg-yellow-500', Active_days: [1,3,5,null,null,null,null], completedDays: [1,null,null,null,null,null,null] },
+    { name: '📝 Journal', color: 'bg-purple-500', Active_days: [0,2,4,null,null,null,null], completedDays: [] },
+    { name: '❌ Alcohol', color: 'bg-pink-500', Active_days: [1,null,null,null,null,null,null], completedDays: [] },
+    { name: '🚿 Cold Shower', color: 'bg-blue-500', Active_days: [0,null,null,null,null,null], completedDays: [] },
+    { name: '🦷 Floss', color: 'bg-gray-500', Active_days: [0, 2, 4, 6,null,null,null], completedDays: []},
+    { name: '🧘 Meditate', color: 'bg-orange-500', Active_days: [1, 3, 5,null,null,null,null], completedDays: []},
+    { name: '🎧 eBook', color: 'bg-teal-500', Active_days: [1, 2, 3, 4, 5,null,null], completedDays: [] },
+    { name: 'Run', color: 'bg-red-500', Active_days: [0, 2, 4,null,null,null,null], completedDays: [] },
+    { name: 'Read', color: 'bg-green-500', Active_days: [0, 3, 6,null,null,null,null], completedDays: [] },
+    { name: 'Cook', color: 'bg-indigo-500', Active_days: [1, 2, 3,null,null,null,null], completedDays: [] },
+  ]); 
+
   const progress = 86; // Example progress
 
   const addHabit = (newHabit) => {
@@ -62,11 +66,11 @@ const HabitTracker = () => {
           </div>
           <HabitTable habits={habits} />
         </div>
-        <Habits statuses={statuses} />
+        <Habits statuses={habits} />
       </div>
-
     </div>
   );
 };
 
 export default HabitTracker;
+//<HabitForm addHabit={addHabit} />
