@@ -18,5 +18,5 @@ const AppContainer = styled.div`
   align-items: center;
   height: 100vh;
   background-color: #f0f0f0;
-  font-family: Arial, sans-serif;
+  font-family: Arial, sans-serif,semibold;
 `;
