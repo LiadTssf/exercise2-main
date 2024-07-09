@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import Habit from './Habit';
-
+import HabitForm from './HabitForm';
 const Habits = ({ statuses ,updateCompletedDays}) => {
 
   const [habits, setHabits] = useState(statuses);

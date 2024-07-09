@@ -3,6 +3,7 @@ import HabitTable from './HabitTable';
 import HabitStatus from './HabitStatus';
 import Habits from './Habits';
 import HabitForm from './HabitForm';
+import { Dialog } from '@headlessui/react';
 
 const HabitTracker = () => {
   const [week, setWeek] = useState('Mon, Dec 14 - Sun, Dec 20');
@@ -55,6 +56,7 @@ const HabitTracker = () => {
         <p className="text-gray-600">7 hrs 10 mins till bedtime</p>
       </header>
       <div className="flex flex-wrap justify-between w-full max-w-5xl mt-8 space-y-6 md:space-y-0">
+
         <div className="bg-white rounded-lg shadow-md p-6 w-full md:w-1/2">
           <div className="flex justify-between items-center">
             <button className="text-xl">&lt;</button>
@@ -72,6 +74,7 @@ const HabitTracker = () => {
         </div>
         <Habits statuses={habits} updateCompletedDays={updateCompletedDays} />
       </div>
+      <HabitForm addHabit={addHabit} />
     </div>
     
   );

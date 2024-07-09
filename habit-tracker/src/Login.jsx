@@ -1,30 +1,32 @@
 import React from "react";
 import { useNavigate } from 'react-router-dom';
-const Login = () => {
-    const navigate = useNavigate();
 
-    const NavigateMainPage = () => {
-      
-      navigate('/MainPage');
-    };
-    
+const Login = () => {
+  const navigate = useNavigate();
+
+  const NavigateMainPage = () => {
+    navigate('/MainPage');
+  };
+
   return (
-    <div className="flex items-center justify-center h-screen w-full px-5 sm:px-0">
+    <div className="flex items-center justify-center h-screen w-full px-5 sm:px-0 bg-cover bg-center" 
+         style={{ backgroundImage: `url(https://www.veeforu.com/wp-content/uploads/2022/10/Purple-color-linear-gradient-background..png)` }}>
       <div className="flex bg-white rounded-lg shadow-lg border overflow-hidden max-w-sm lg:max-w-4xl w-full">
         <div
           className="hidden md:block lg:w-1/2 bg-cover bg-blue-700"
-          style={{
-            backgroundImage: `url(https://www.tailwindtap.com//assets/components/form/userlogin/login_tailwindtap.jpg)`,
-          }}
-        ></div>
+          style={{ backgroundImage: `url(https://media.istockphoto.com/id/1305998573/vector/woman-with-pencil-marking-completed-tasks-on-to-do-list-concept-of-time-management-work.jpg?s=612x612&w=0&k=20&c=F_P6Ke0ubUk1rj7TmF4RMHN7SySW74ZVJOqi4CyHMJU=)`,
+            backgroundSize: 'cover', 
+              backgroundPosition: 'center' }}
+          ></div>
         <div className="w-full p-8 lg:w-1/2">
-          <p className="text-xl text-gray-600 text-center">Welcome back!</p>
+          <p className="text-2xl text-gray-600 text-center font-bold">Welcome back!</p>
+          <p className="text-center text-gray-500 mb-4">Track your habits and share your progress with friends</p>
           <div className="mt-4">
             <label className="block text-gray-700 text-sm font-bold mb-2">
               Email Address
             </label>
             <input
-              className="text-gray-700 border border-gray-300 rounded py-2 px-4 block w-full focus:outline-2 focus:outline-blue-700"
+              className="text-gray-700 border border-gray-300 rounded py-2 px-4 block w-full focus:outline-2 focus:outline-green-500"
               type="email"
               required
             />
@@ -36,24 +38,24 @@ const Login = () => {
               </label>
             </div>
             <input
-              className="text-gray-700 border border-gray-300 rounded py-2 px-4 block w-full focus:outline-2 focus:outline-blue-700"
+              className="text-gray-700 border border-gray-300 rounded py-2 px-4 block w-full focus:outline-2 focus:outline-green-500"
               type="password"
             />
             <a
               href="#"
               className="text-xs text-gray-500 hover:text-gray-900 text-end w-full mt-2"
             >
-              Forget Password?
+              Forgot Password?
             </a>
           </div>
           <div className="mt-8">
-            <button onClick={NavigateMainPage} className="bg-blue-700 text-white font-bold py-2 px-4 w-full rounded hover:bg-blue-600">
+            <button onClick={NavigateMainPage} className="bg-green-500 text-white font-bold py-2 px-4 w-full rounded hover:bg-green-400">
               Login
             </button>
           </div>
           <a
             href="#"
-            className=" flex items-center justify-center mt-4 text-white rounded-lg shadow-md hover:bg-gray-100"
+            className="flex items-center justify-center mt-4 bg-white rounded-lg shadow-md border hover:bg-gray-100"
           >
             <div className="flex px-5 justify-center w-full py-3">
               <div className="min-w-[30px]">
@@ -88,8 +90,8 @@ const Login = () => {
               href="#"
               className="text-xs text-gray-500 capitalize text-center w-full"
             >
-              Don&apos;t have any account yet?
-              <span className="text-blue-700"> Sign Up</span>
+              Don&apos;t have an account yet?
+              <span className="text-green-500"> Sign Up</span>
             </a>
           </div>
         </div>
@@ -97,4 +99,5 @@ const Login = () => {
     </div>
   );
 };
+
 export default Login;
