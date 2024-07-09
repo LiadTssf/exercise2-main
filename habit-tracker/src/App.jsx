@@ -1,12 +1,20 @@
 import React from 'react';
 import HabitTracker from './HabitTracker';
 import styled from 'styled-components';
-
+import Login from"./Login.jsx";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 function App() {
   return (
-    <AppContainer>
-      <HabitTracker />
+<BrowserRouter>
+  <AppContainer>  
+    <Routes>
+     <Route path="/MainPage" element={<HabitTracker/>} />   
+     <Route path="/" element={<Login/>} />   
+    </Routes>  
     </AppContainer>
+</BrowserRouter>
+
+    
   );
 }
 
