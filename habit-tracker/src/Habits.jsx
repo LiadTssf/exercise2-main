@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import Habit from './Habit';
 
-const Habits = ({ statuses }) => {
+const Habits = ({ statuses ,updateCompletedDays}) => {
 
   const [habits, setHabits] = useState(statuses);
 
@@ -16,6 +16,7 @@ const Habits = ({ statuses }) => {
       }
       return h;
     });
+    updateCompletedDays(updatedHabits);
     setHabits(updatedHabits);
     // Print all completed days for each habit
     updatedHabits.forEach(h => {
@@ -34,6 +35,7 @@ const Habits = ({ statuses }) => {
       }
       return h;
     });
+    updateCompletedDays(updatedHabits);
     setHabits(updatedHabits);
     updatedHabits.forEach(h => {
       console.log(`Habit: ${h.name}, Completed Days: ${h.completedDays}`);

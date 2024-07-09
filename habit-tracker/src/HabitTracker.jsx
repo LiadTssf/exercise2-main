@@ -36,6 +36,10 @@ const HabitTracker = () => {
 
   const progress = 86; // Example progress
 
+  const updateCompletedDays=(updatedHabit)=>{
+    setHabits(updatedHabit)
+  }
+
   const addHabit = (newHabit) => {
     setHabits((prevHabits) => [...prevHabits, newHabit]);
     setStatuses((prevStatuses) => [
@@ -66,7 +70,7 @@ const HabitTracker = () => {
           </div>
           <HabitTable habits={habits} />
         </div>
-        <Habits statuses={habits} />
+        <Habits statuses={habits} updateCompletedDays={updateCompletedDays} />
       </div>
     </div>
     
