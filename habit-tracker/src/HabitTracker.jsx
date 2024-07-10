@@ -7,6 +7,7 @@ import { Dialog } from '@headlessui/react';
 
 const HabitTracker = () => {
   const [week, setWeek] = useState('Mon, Dec 14 - Sun, Dec 20');
+
   /*
   const [habits, setHabits] = useState([
     { habit: '💪 Exercise', data: [null, null, null, null, null, null, null] },
@@ -42,11 +43,14 @@ const HabitTracker = () => {
   }
 
   const addHabit = (newHabit) => {
+    console.log(newHabit)
     setHabits((prevHabits) => [...prevHabits, newHabit]);
-    setStatuses((prevStatuses) => [
-      ...prevStatuses,
-      { habit: newHabit.habit, status: 'New', completed: false },
-    ]);
+
+    console.log(habits)
+    // setStatuses((prevStatuses) => [
+    //   ...prevStatuses,
+    //   { habit: newHabit.habit, status: 'New', completed: false },
+    // ]);
   };
 
   return (
@@ -72,9 +76,8 @@ const HabitTracker = () => {
           </div>
           <HabitTable habits={habits} />
         </div>
-        <Habits statuses={habits} updateCompletedDays={updateCompletedDays} />
+        <Habits statuses={habits} updateCompletedDays={updateCompletedDays} addHabit={addHabit}/>
       </div>
-      <HabitForm addHabit={addHabit} />
     </div>
     
   );
