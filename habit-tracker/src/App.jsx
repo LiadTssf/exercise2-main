@@ -3,6 +3,36 @@ import HabitTracker from './HabitTracker';
 import styled from 'styled-components';
 import Login from"./Login.jsx";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+
+// Function to send the height of the content to the parent page
+const sendHeightToParent = () => {
+  const height = document.body.scrollHeight;
+  window.parent.postMessage({ type: 'myApp', action: 'setHeight', height }, '*');
+};
+
+document.addEventListener('DOMContentLoaded', () => {
+  sendHeightToParent();  // Send initial height on DOM load
+});
+
+// Listen for messages from the parent page
+window.addEventListener('message', (event) => {
+  if (event.data === 'requestHeight') {
+      sendHeightToParent();
+  }
+  if (event.data.action === 'setTheme') {
+      setTheme(event.data.theme);
+  }
+  if (event.data.action === 'privateApi' && typeof acceptPrivateApiResponse !== 'undefined') {
+      acceptPrivateApiResponse(event.data);
+  }
+});
+
+// Observe changes to the content's height
+const resizeObserver = new ResizeObserver(() => {
+  sendHeightToParent();
+});
+resizeObserver.observe(document.body);
+
 function App() {
   return (
 <BrowserRouter>
