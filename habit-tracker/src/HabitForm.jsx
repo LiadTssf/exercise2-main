@@ -63,6 +63,9 @@ const HabitForm = ({ closeModal,isModalOpen,addNewHabit }) => {
             <Button type="submit" color="blue" ripple="light">
               Add Habit
             </Button>
+            <Button onClick={()=>{closeModal()}} color="red" ripple="light">
+              close
+            </Button>
           </form>
         </DialogBody>
       </Dialog>
