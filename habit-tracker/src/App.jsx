@@ -51,10 +51,10 @@ function App() {
 export default App;
 
 const AppContainer = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: center;
-  background-color: #f0f0f0;
+  ${'' /* display: flex; */}
+  ${'' /* justify-content: center; */}
+  ${'' /* align-items: center; */}
+  ${'' /* height: center; */}
+  ${'' /* background-color: #f0f0f0; */}
   font-family: Arial, sans-serif,semibold;
 `;

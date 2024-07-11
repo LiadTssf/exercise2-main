@@ -8,21 +8,6 @@ import { Dialog } from '@headlessui/react';
 const HabitTracker = () => {
   const [week, setWeek] = useState('Mon, Dec 14 - Sun, Dec 20');
 
-  /*
-  const [habits, setHabits] = useState([
-    { habit: '💪 Exercise', data: [null, null, null, null, null, null, null] },
-    { habit: '📝 Journal', data: ['#d4a4fc', '#d4a4fc', '#d4a4fc', '#d4a4fc', '#d4a4fc', '#d4a4fc', '#d4a4fc'] },
-    { habit: '❌ Alcohol', data: ['#f8a4a4', '#f8a4a4', '#f8a4a4', null, '#f8a4a4', '#f8a4a4', '#f8a4a4'] },
-    { habit: '🚿 Cold Shower', data: ['#a4d4fc', null, '#a4d4fc', '#a4d4fc', null, '#a4d4fc', null] },
-    { habit: '🦷 Floss', data: ['#a4fca4', '#a4fca4', null, '#a4fca4', null, null, null] },
-    { habit: '🧘 Meditate', data: [null, null, null, null, null, null, null] },
-    { habit: '🎧 eBook', data: [null, '#a4d4fc', '#a4d4fc', null, null, null, null] },
-    { habit: 'Run', data: [null, '#a4d4fc', '#a4d4fc', null, null, null, null] },
-    { habit: 'Read', data: [null, '#a4d4fc', '#a4d4fc', null, null, null, null] },
-    { habit: 'Cook', data: [null, '#a4d4fc', '#a4d4fc', null, null, null, null] },
-  ]);
-  */
-
   const [habits, setHabits] = useState([
     { name: '💪 Exercise', color: 'bg-yellow-500', Active_days: [1,3,5,null,null,null,null], completedDays: [] },
     { name: '📝 Journal', color: 'bg-purple-500', Active_days: [0,2,4,null,null,null,null], completedDays: [] },
@@ -47,39 +32,49 @@ const HabitTracker = () => {
     setHabits((prevHabits) => [...prevHabits, newHabit]);
 
     console.log(habits)
-    // setStatuses((prevStatuses) => [
-    //   ...prevStatuses,
-    //   { habit: newHabit.habit, status: 'New', completed: false },
-    // ]);
   };
 
-  return (
-    <div className="flex flex-col items-center w-full bg-gray-100 text-gray-800">
-      <header className="text-center">
-        <h1 className="text-3xl font-bold">Good afternoon, Danny</h1>
-        <p className="text-gray-600">7 hrs 10 mins till bedtime</p>
+    return (
+      <div className='m-5'>
+      <header className=' text-center mb-5'>
+          <h1 className='text-3xl font-bold'>Good afternoon, Danny</h1>
+          <p className=' text-gray-600'>Have a nice day</p>
       </header>
-      <div className="flex flex-wrap justify-between w-full max-w-5xl mt-8 space-y-6 md:space-y-0">
-
-        <div className="bg-white rounded-lg shadow-md p-6 w-full md:w-1/2">
-          <div className="flex justify-between items-center">
-            <button className="text-xl">&lt;</button>
-            <h2 className="text-xl font-semibold">{week}</h2>
-            <button className="text-xl">&gt;</button>
-          </div>
-          <div className="flex justify-between items-center mt-6">
-            <span>Up 50% from the week before</span>
-            <div className="w-3/4 bg-gray-200 rounded-full h-2.5">
-              <div className="bg-blue-500 h-2.5 rounded-full" style={{ width: `${progress}%` }}></div>
+        <div className='grid lg:grid-cols-3'>
+            <div className=' min-h-60 rounded-lg p-5 shadow-lg col-span-2 bg-white hidden lg:block'>
+              <HabitTable habits={habits} />
             </div>
-            <span>{progress}% achieved</span>
-          </div>
-          <HabitTable habits={habits} />
+            <div className=' min-h-60 rounded-lg shadow-lg bg-white'>
+              <Habits statuses={habits} updateCompletedDays={updateCompletedDays} addHabit={addHabit}/>
+            </div>
         </div>
-        <Habits statuses={habits} updateCompletedDays={updateCompletedDays} addHabit={addHabit}/>
       </div>
-    </div>
-    
+
+    // <div className="flex flex-col items-center w-full bg-gray-100 text-gray-800">
+    //   <header className="text-center">
+    //     <h1 className="text-3xl font-bold">Good afternoon, Danny</h1>
+    //     <p className="text-gray-600">7 hrs 10 mins till bedtime</p>
+    //   </header>
+    //   <div className="flex flex-wrap justify-between w-full max-w-5xl mt-8 space-y-6 md:space-y-0">
+
+    //     <div className="bg-white rounded-lg shadow-md p-6 w-full md:w-1/2">
+    //       <div className="flex justify-between items-center">
+    //         <button className="text-xl">&lt;</button>
+    //         <h2 className="text-xl font-semibold">{week}</h2>
+    //         <button className="text-xl">&gt;</button>
+    //       </div>
+    //       <div className="flex justify-between items-center mt-6">
+    //         <span>Up 50% from the week before</span>
+    //         <div className="w-3/4 bg-gray-200 rounded-full h-2.5">
+    //           <div className="bg-blue-500 h-2.5 rounded-full" style={{ width: `${progress}%` }}></div>
+    //         </div>
+    //         <span>{progress}% achieved</span>
+    //       </div>
+    //       <HabitTable habits={habits} />
+    //     </div>
+    //     <Habits statuses={habits} updateCompletedDays={updateCompletedDays} addHabit={addHabit}/>
+    //   </div>
+    // </div>
   );
 };
 

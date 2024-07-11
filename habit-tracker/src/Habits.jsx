@@ -76,7 +76,7 @@ const Habits = ({ statuses ,updateCompletedDays,addHabit}) => {
   });
 
   return (
-    <div className="bg-white rounded-lg shadow-md p-6 w-full md:w-1/2">
+    <div className="bg-white rounded-lg shadow-md p-6 w-full">
       <div className="flex justify-around">
       <h2 className="text-2xl font-bold mb-4">{currentDay}</h2>
       <button
